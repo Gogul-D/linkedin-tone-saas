@@ -1,16 +1,21 @@
-import { UserButton, SignedIn, SignedOut } from "@clerk/nextjs";
+"use client";
+
+import Link from "next/link";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 export default function Navbar() {
   return (
-    <nav className="p-4 bg-blue-600 text-white flex justify-between">
-      <span className="font-bold">LinkedIn Tone SaaS</span>
-      <div className="space-x-4 flex items-center">
-        <a href="/" className="hover:underline">Home</a>
-        <a href="/dashboard" className="hover:underline">Dashboard</a>
+    <nav className="flex items-center justify-between p-4 shadow-md bg-white">
+      <Link href="/" className="text-xl font-bold">LinkedIn Tone AI</Link>
 
+      <div>
         <SignedOut>
-          <a href="/sign-in" className="hover:underline">Sign In</a>
-          <a href="/sign-up" className="hover:underline">Sign Up</a>
+          <Link
+            href="/sign-in"
+            className="px-4 py-2 bg-blue-500 text-white rounded-md"
+          >
+            Sign In
+          </Link>
         </SignedOut>
         <SignedIn>
           <UserButton afterSignOutUrl="/" />
